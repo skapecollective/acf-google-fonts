@@ -1,0 +1,66 @@
+$gutter: 10px;
+
+.acf-google_fonts {
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  // Scafolding
+  .acf-google_fonts-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$gutter;
+    margin-left: -$gutter;
+
+    .acf-google_fonts-column {
+      position: relative;
+      width: 100%;
+      padding-right: $gutter;
+      padding-left: $gutter;
+
+      flex-basis: 0;
+      flex-grow: 1;
+      min-width: 0;
+      max-width: 100%;
+    }
+  }
+
+  // List
+  ul.acf-google_fonts-list {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      display: block;
+      margin: 0;
+      padding: 0;
+      float: none;
+      font-size: 13px;
+      line-height: 22px;
+      position: relative;
+      word-wrap: break-word;
+    }
+  }
+
+  // Label
+  .acf-google_fonts-label {
+    text-transform: uppercase;
+    margin-bottom: $gutter / 2;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  // Preview
+  .acf-google_fonts-preview {
+    display: block;
+    padding: $gutter;
+    background-color: #F9F9F9;
+    border: 1px solid #eee;
+    margin-bottom: $gutter;
+    font-size: 18px;
+  }
+
+}
