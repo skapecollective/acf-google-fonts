@@ -104,7 +104,7 @@ class Field extends acf_field {
 			'name' => 'return_format',
 			'choices'	   => [
 				'family' => __( 'Font family name', 'skape' ),
-				'variants' => __( 'Selected font variants', 'skape' ),
+                'variants' => __( 'Selected font variants', 'skape' ),
 				'subsets' => __( 'Selected font subsets', 'skape' ),
 				'import' => __( 'CSS import url', 'skape' ),
 				'array' => 'All (Array)'
