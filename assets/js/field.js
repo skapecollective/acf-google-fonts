@@ -26,25 +26,36 @@
                 // Update font preview
                 if ( $preview.length ) {
 
+                    const $previewText = $preview.find( '.acf-google_fonts-preview_text' );
+                    const $previewLink = $preview.find( '.acf-google_fonts-preview_link' );
+
                     // Preserve edited text
-                    const previewText = $preview.text();
+                    const previewText = $previewText.text();
 
                     // Remove previous font styles
-                    $preview.empty();
+                    $previewText.empty();
+                    $previewLink.empty();
 
                     // Add stylesheet
                     $( '<link>', {
                         rel: 'stylesheet',
                         type: 'text/css',
                         href: response.data.importUrl
-                    } ).appendTo( $preview );
+                    } ).appendTo( $previewText );
 
                     // Add font preview
                     $( '<div>', {
                         contenteditable: true,
                         text: previewText || acf._e( 'google_fonts', 'preview_text' ),
                         style: `font-family: ${response.data.family};`
-                    } ).appendTo( $preview );
+                    } ).appendTo( $previewText );
+
+                    // Create preview link
+                    $( '<a>', {
+                        href: response.data.infoUrl,
+                        target: '_blank',
+                        text: acf._e( 'google_fonts', 'preview_link' )
+                    } ).appendTo( $previewLink );
                 }
 
                 // Update font fields
@@ -52,35 +63,38 @@
                     const type = checkboxTypes[ j ];
                     const $type = $container.find( `.acf-google_fonts-${type} .acf-google_fonts-js_values` );
 
-                    $type.empty();
+                    if ( $type.length ) {
+                        $type.empty();
 
-                    if ( type in response.data ) {
+                        if ( type in response.data ) {
 
-                        const $ul = $( '<ul>', {
-                            class: 'acf-google_fonts-list'
-                        } ).appendTo( $type );
+                            const $ul = $( '<ul>', {
+                                class: 'acf-google_fonts-list'
+                            } ).appendTo( $type );
 
-                        for ( var value in response.data[ type ] ) {
+                            for ( var value in response.data[ type ] ) {
 
-                            const label = response.data[ type ][ value ];
-                            const id = `_${key}_${type}_${value}`;
+                                const label = response.data[ type ][ value ];
+                                const id = `_${key}_${type}_${value}`;
 
-                            const $li = $( '<li>' ).appendTo( $ul );
+                                const $li = $( '<li>' ).appendTo( $ul );
 
-                            $( '<input>', {
-                                type: 'checkbox',
-                                name: `${name}[${type}][]`,
-                                value: value,
-                                id: id
-                            } ).appendTo( $li );
+                                $( '<input>', {
+                                    type: 'checkbox',
+                                    name: `${name}[${type}][]`,
+                                    value: value,
+                                    id: id
+                                } ).appendTo( $li );
 
-                            $( '<label>', {
-                                text: label,
-                                for: id
-                            } ).appendTo( $li );
+                                $( '<label>', {
+                                    text: label,
+                                    for: id
+                                } ).appendTo( $li );
 
+                            }
                         }
                     }
+
                 }
             };
 

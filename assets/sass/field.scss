@@ -1,10 +1,13 @@
 $gutter: 10px;
+$font-lg: 18px;
+$font-sm: 11px;
 
 .acf-google_fonts {
 
-  *, *:before, *:after {
-    box-sizing: border-box;
-  }
+  *, *:before, *:after { box-sizing: border-box; }
+  .acf-google_fonts-text_left { text-align: left; }
+  .acf-google_fonts-text_center { text-align: center; }
+  .acf-google_fonts-text_right { text-align: right; }
 
   // Scafolding
   .acf-google_fonts-row {
@@ -49,18 +52,45 @@ $gutter: 10px;
   .acf-google_fonts-label {
     text-transform: uppercase;
     margin-bottom: $gutter / 2;
-    font-size: 11px;
+    font-size: $font-sm;
     letter-spacing: 0.5px;
   }
 
   // Preview
   .acf-google_fonts-preview {
-    display: block;
-    padding: $gutter;
-    background-color: #F9F9F9;
-    border: 1px solid #eee;
     margin-bottom: $gutter;
-    font-size: 18px;
+
+    .acf-google_fonts-label {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      padding: 5px;
+      margin-bottom: -1px;
+      background-color: #F9F9F9;
+      border: 1px solid #eee;
+      border-bottom: 0;
+      line-height: 1;
+    }
+
+    .acf-google_fonts-preview_text {
+      display: block;
+      padding: $gutter;
+      background-color: #F9F9F9;
+      border: 1px solid #eee;
+      font-size: $font-lg;
+    }
+
+    .acf-google_fonts-preview_link {
+      a {
+        font-size: $font-sm;
+        &:after {
+          content: '\00BB';
+          display: inline-block;
+          margin-left: $gutter / 2;
+        }
+      }
+    }
+
   }
 
 }
