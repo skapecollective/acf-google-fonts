@@ -20,6 +20,14 @@ There are 4 returnable values for this field which include:
 | Selected font variants | Returns an array of selected font variants (if enabled) | `['regular', 'italic', '400']` |
 | Selected font subsets | Returns an array of selected font subsets (if enabled) | `['latin', 'latin-ext', 'greek']` |
 | CSS import url | A full url for the selected family, variants and subsets for including in CSS. | `https://fonts.googleapis.com/css?family=Mulish:300,500,200italic,300italic&display=swap` |
-| All (Array) | An array including all of the above. | `['family' => 'Open Sans', 'variants' => ['regular', 'italic', '400'], 'subsets' => ['latin', 'latin-ext', 'greek']]` |
+| All (Array) | An array including all of the above. | ***see below** |
 
+```php
+[
+    'family' => 'Open Sans',
+    'variants' => ['regular', 'italic', '400'],
+    'subsets' => ['latin', 'latin-ext', 'greek'],
+    'import' => 'https://fonts.googleapis.com/css?family=Open+Sans:300,500,200italic,300italic&display=swap'
+]
+```
 
