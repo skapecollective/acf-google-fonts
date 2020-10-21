@@ -158,6 +158,13 @@ class Field extends acf_field {
 
 		?>
 			<div class="acf-google_fonts">
+                <script type="application/json" class="acf-google_fonts-js_data"><?= json_encode( [
+                    'action' => $this->ajaxFieldRenderer->requestName(),
+                    'token' => $this->ajaxFieldRenderer->getToken(),
+                    'name' => $field[ 'name' ],
+                    'id' => $field[ 'id' ],
+                    'values' => $values
+                ] ); ?></script>
 				<?php if ( $fonts = $field[ 'choices' ] ): ?>
 
 					<?php if ( $field[ 'preview' ] ): ?>
@@ -179,11 +186,7 @@ class Field extends acf_field {
 						<div class="acf-google_fonts-column">
 							<div class="acf-google_fonts-choice">
 								<div class="acf-google_fonts-label"><?php _e('Font Family', 'skape' ); ?></div>
-								<select name="<?= esc_attr( $field[ 'name' ] . '[family]' ); ?>"
-										data-js-action="<?= esc_attr( $this->ajaxFieldRenderer->requestName() ); ?>"
-										data-js-token="<?= esc_attr( $this->ajaxFieldRenderer->getToken() ); ?>"
-										data-js-name="<?= esc_attr( $field[ 'name' ] ); ?>"
-										data-js-key="<?= esc_attr( $field[ 'id' ] ); ?>">
+								<select name="<?= esc_attr( $field[ 'name' ] . '[family]' ); ?>">
 									<?php foreach( $fonts as $family ): ?>
 										<option <?php selected( $family, $values[ 'family' ] ); ?> value="<?= $family; ?>"><?= $family; ?></option>
 									<?php endforeach ?>

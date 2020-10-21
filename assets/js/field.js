@@ -8,17 +8,13 @@
             const $container = $field.find( '.acf-google_fonts' );
             const $select = $container.find( '.acf-google_fonts-choice select' );
             const $preview = $container.find( '.acf-google_fonts-preview' );
+            const data = JSON.parse( $container.find( '.acf-google_fonts-js_data' ).text() );
 
             // Initiate select2
             $select.select2();
 
             const checkboxTypes = [ 'variants', 'subsets' ];
             var request = null;
-
-            const name = $select.data( 'js-name' );
-            const key = $select.data( 'js-key' );
-            const action = $select.data( 'js-action' );
-            const token = $select.data( 'js-token' );
 
             const handleError = ( response ) => console.log( response );
             const handleSuccess = ( response ) => {
@@ -72,19 +68,21 @@
                                 class: 'acf-google_fonts-list'
                             } ).appendTo( $type );
 
+                            let currentValue = 'values' in data && type in data.values ? data.values[ type ] : null;
+
                             for ( var value in response.data[ type ] ) {
 
                                 const label = response.data[ type ][ value ];
-                                const id = `_${key}_${type}_${value}`;
+                                const id = `_${data.id}_${type}_${value}`;
 
                                 const $li = $( '<li>' ).appendTo( $ul );
 
                                 $( '<input>', {
                                     type: 'checkbox',
-                                    name: `${name}[${type}][]`,
+                                    name: `${data.name}[${type}][]`,
                                     value: value,
                                     id: id
-                                } ).appendTo( $li );
+                                } ).appendTo( $li ).prop( 'checked', Array.isArray( currentValue ) ? currentValue.includes( value ) : false );
 
                                 $( '<label>', {
                                     text: label,
@@ -121,8 +119,8 @@
                         type: 'post',
                         dataType: 'json',
                         data: {
-                            action: action,
-                            csrf: token,
+                            action: data.action,
+                            csrf: data.token,
                             family: $select.val()
                         }
                     } ).done( ( response, textStatus, jqXHR ) => {
