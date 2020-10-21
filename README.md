@@ -5,7 +5,7 @@ This plugin creates a new ACF field that can be used to select fonts from the Go
 
 A local copy of API results are included with the plugin, however, an Google Fonts API key is helpful to update the fonts list automatically.
 
-> [**Download this plugin here »**](https://github.com/thelevicole/acf-google-fonts/releases/download/1.0.0/acf-google-fonts.zip)
+> [**Download this plugin here »**](https://github.com/skapecollective/acf-google-fonts/releases/download/1.0.0/acf-google-fonts.zip)
 
 ## Field settings
 ![Example of field setup.](assets/images/settings.jpg)

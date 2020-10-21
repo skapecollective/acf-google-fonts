@@ -4,7 +4,7 @@
  * Plugin Name: Advanced Custom Fields: Google Fonts
  * Description: A field for Advanced Custom Fields (ACF) allowing users to select fonts from the Google Fonts suite.
  * Version: 1.0.0
- * Plugin URI: https://skape.co/
+ * Plugin URI: https://github.com/skapecollective/acf-google-fonts/
  * Author: Skape Collective
  * Author URI: https://skape.co/
  * Text Domain: skape
